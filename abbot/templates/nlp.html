@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} NLP {% endblock %}</h1>
+
+
+<br> <br> <br> <br>  
+
+<h2> Konkordanz-Liste </h2>
+
+{% for para in hlist %}
+
+	{{ para }} <br> <br> 
+
+    {% endfor %}
+<hr>
+
+
+<h2> Kolokations-Liste </h2>
+
+{% for para in coloc %}
+
+	{{ para }} <br> <br> 
+
+    {% endfor %}
+
+<hr>
+<hr>
+
+<a href="https://digital.aschaffenburg.de">
+            <h2>dima home</h2>
+        </a>
+
+{% endblock %}
+
+

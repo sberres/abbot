@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Transkription {% endblock %}</h1>
+
+
+<br> <br> <br> <br>  
+
+
+{% for para in paragraphs %}
+
+	{{ para }} <br> <br> 
+
+    {% endfor %}
+
+
+
+<hr>
+
+<a href="https://digital.aschaffenburg.de">
+            <h2>dima home</h2>
+        </a>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Kategorie: {{ category }} {% endblock %}</h1>
+
+<hr>
+
+<!-- header for categories and keywords  ------------------------------------------------------------>
+
+	<strong> Kategorien: </strong> <br>
+	{% for category in categories %}
+        <a href="{{ url_for('category', category=category['category'] ) }}">
+            <button type="button" class="btn btn-outline-primary"> {{ category['category'] }} </button>
+        </a>	
+    {% endfor %}
+        
+    <hr>
+        
+        
+    <strong> Schlagworte: </strong> <br>
+
+    {% for keyword in keywords  %}
+
+        <a href="{{ url_for('keyword', keyword=keyword) }}">
+            <button type="button" class="btn btn-outline-info"> {{ keyword }} </button>
+        </a>
+
+    {% endfor %}
+    <hr>
+        
+
+
+
+<!-- index iteration  ------------------------------------------------------------>
+    {% for entry in entries %}
+
+	<br>   
+        <a href="{{ url_for('entry', entry_id=entry['id']) }}">
+            <h2> {{ entry['id'] }} </h2>        
+        </a>
+        
+        {{ entry['content'] }}         
+    
+        <hr>
+
+        <!-- badges -->        
+        <a href="{{ url_for('edit', id=entry['id']) }}">
+            <span class="badge badge-warning"> Edit </span>
+        </a>      
+            
+            
+    	<span class="badge badge-primary">{{ entry['date'] }}</span>    	
+        <span class="badge badge-secondary">{{ entry['type'] }}</span>    	    	
+        <span class="badge badge-terciary">{{ entry['theme'] }}</span>
+    	<br>
+    	
+    	
+    	<tt> location: {{ entry['location'] }}; coordinates: {{ entry['coordinates'] }}  </tt>  
+               
+        <hr>
+        <!-- Kategorie: --> 
+        
+        <tt> Kategorie: </tt> 
+                <a href="{{ url_for('category', category=entry['category']) }}">
+                    <button type="button" class="btn btn-outline-info"> {{ entry['category']}} </button>
+                </a>   
+        
+        <br>
+           
+        <tt> Schlagworte: {{ entry['keywords']}} </tt>        
+        <br>   
+    
+        <!-- Quellen: -->
+            <i> Quellen: {{ entry['source'] }} </i>
+
+        <hr>      
+
+    {% endfor %}
+<!------------------------------------------------------------->
+
+{% endblock %}
+
+       

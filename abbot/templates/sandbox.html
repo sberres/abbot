@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} Sandbox {% endblock %}</h2>
+
+
+
+<div class="dropdown">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Link 1</a>
+    <a class="dropdown-item" href="#">Link 2</a>
+    <a class="dropdown-item" href="#">Link 3</a>
+  </div>
+</div>
+       
+<!--       
+<div class="spinner-border text-success"></div>
+-->
+
+
+
+
+{% for category in categories %}
+
+        
+	Kategorie:
+        <a href="{{ url_for('category', category=category['category'] ) }}">
+            <button type="button" class="btn btn-outline-info"> {{ category['category'] }} </button>
+        </a>	
+	
+	<br>
+    Schlagworte: <tt> {{ category['keywords']}} </tt>  
+
+
+<!-- 
+<p id="demo"></p>
+
+<script>
+let text = "How are you doing today?";
+
+let text =  {{ category['keywords']}} 
+const myArray = text.split(", ");
+
+
+
+const str = 'one two, three,';
+const arr = str.split(',');
+console.log(arr);
+
+
+document.getElementById("demo").innerHTML = myArray; 
+</script>
+-->
+
+
+    
+	<br>
+	
+<!--
+{% for kw in category['keywords'] %}
+    {{ kw }};;;
+{% endfor %}
+--> 
+
+    <hr>
+        
+       
+        {% endfor %}
+        
+        
+Schlagworte:
+{% for keyword in klist %}
+
+        <a href="{{ url_for('keyword', keyword=keyword) }}">
+            <button type="button" class="btn btn-outline-info"> {{ keyword }} </button>
+        </a>
+        
+
+<!--         
+        <span class="badge badge-secondary">{{ keyword }}</span>
+        -->
+        
+{% endfor %}
+    
+
+{% endblock %}

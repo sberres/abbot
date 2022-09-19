@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ entry['id'] }} {% endblock %}</h2>
+    
+    <p>{{ entry['content'] }}</p>
+
+    <hr>
+
+    <tt> theme: {{ entry['theme'] }}  </tt>
+    <br>  
+    
+    <!-- keywords: --> 
+    <tt> keywords: {{ entry['keywords'] }}  </tt>
+    <br>
+    
+    <!-- Quellen: -->
+    <i> Quellen: {{ entry['source'] }} </i>        
+    <hr>
+
+
+    <span class="badge badge-primary">{{ entry['date'] }}</span>
+    
+    <a href="{{ url_for('edit', id=entry['id']) }}">
+        <span class="badge badge-warning"> Edit </span>
+    </a>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Suche {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="stichwort"> Stichwort </label>
+        <input type="text" name="stichwort"
+               placeholder='Stichwort eingeben'
+               class='form-control'
+               value="{{ request.form['stichwort'] }}"></input>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"> Los! </button>
+    </div>
+</form>
+
+
+
+
+<br> <br> <br> <br>  
+
+
+<p> Das Stichwort <big> <u>{{ stichwort }}</u> </big> taucht insgesamt <big> {{ score }} </big> mal auf,
+und zwar an den folgenen Stellen: </p>
+
+{% for nummer in liste %}
+    <a href="{{nummer}}"><big>{{nummer}}</big></a>,
+    {% endfor %}
+<hr>
+
+
+    
+<!-- index iteration  ------------------------------------------------------------>
+    {% for entry in entries %}
+
+	<br>   
+        <a href="{{ url_for('entry', entry_id=entry['id']) }}">
+            <h2> {{ entry['id'] }} </h2>        
+        </a>
+        
+        {{ entry['content'] }}         
+    
+        <hr>
+
+        <!-- badges -->        
+        <a href="{{ url_for('edit', id=entry['id']) }}">
+            <span class="badge badge-warning"> Edit </span>
+        </a>      
+            
+            
+    	<span class="badge badge-primary">{{ entry['date'] }}</span>    	
+        <span class="badge badge-secondary">{{ entry['type'] }}</span>    	    	
+        <span class="badge badge-terciary">{{ entry['theme'] }}</span>
+    	<br>
+    	
+    	
+    	<tt> location: {{ entry['location'] }}; coordinates: {{ entry['coordinates'] }}  </tt>  
+               
+        <hr>
+        <!-- Kategorie: --> 
+        
+        <tt> Kategorie: </tt> 
+                <a href="{{ url_for('category', category=entry['category']) }}">
+                    <button type="button" class="btn btn-outline-info"> {{ entry['category']}} </button>
+                </a>   
+        
+        <br>
+           
+        <tt> Schlagworte: {{ entry['keywords']}} </tt>        
+        <br>   
+    
+        <!-- Quellen: -->
+            <i> Quellen: {{ entry['source'] }} </i>
+
+        <hr>      
+
+    {% endfor %}
+<!------------------------------------------------------------->
+
+
+{% endblock %}
+
+        

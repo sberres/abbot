@@ -1,0 +1,107 @@
+<!-- https://www.w3schools.com/bootstrap4 -->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} index {% endblock %}</h1>
+    
+    
+    
+<!-- index iteration  ------------------------------------------------------------>
+    {% for entry in entries %}
+
+	<br>   
+        <a href="{{ url_for('entry', entry_id=entry['id']) }}">
+            <h2> {{ entry['id'] }} </h2>        
+        </a>
+        
+        {{ entry['content'] }}         
+    
+        <hr>
+
+        <!-- badges -->        
+        <a href="{{ url_for('edit', id=entry['id']) }}">
+            <span class="badge badge-warning"> Edit </span>
+        </a>      
+            
+            
+    	<span class="badge badge-primary">{{ entry['date'] }}</span>    	
+        <span class="badge badge-secondary">{{ entry['type'] }}</span>    	    	
+        <span class="badge badge-terciary">{{ entry['theme'] }}</span>
+    	<br>
+    	
+    	
+    	<tt> location: {{ entry['location'] }}; coordinates: {{ entry['coordinates'] }}  </tt>  
+               
+        <hr>
+        <!-- Kategorie: --> 
+        
+        <tt> Kategorie: </tt> 
+                <a href="{{ url_for('category', category=entry['category']) }}">
+                    <button type="button" class="btn btn-outline-info"> {{ entry['category']}} </button>
+                </a>   
+        
+        <br>
+           
+        <tt> Schlagworte: {{ entry['keywords']}} </tt>        
+        <br>   
+    
+        <!-- Quellen: -->
+            <i> Quellen: {{ entry['source'] }} </i>
+
+        <hr>      
+
+    {% endfor %}
+<!------------------------------------------------------------->
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+        
+        
+
+
+<!--
+id
+date
+source
+type
+content
+
+theme
+
+
+category
+keywords
+other
+location
+coordinates
+<!-- nickname
+email
+phone
+comments
+likes
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

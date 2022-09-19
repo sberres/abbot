@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} NLP - Gefunden  {% endblock %}</h1>
+
+
+
+
+<br> <br> <br> <br>  
+
+
+<p> Das Stichwort <big> <u>{{ stichwort }}</u> </big> 
+    taucht in den Feldern
+    <big> {{ nummern }} </big> 
+    insgesamt <big> {{ scorelist }} </big> 
+    mal auf, und zwar: </p>
+
+{% for nummer in nummern %}
+
+    <br>    
+
+    <a href="{{nummer + 1}} ">
+        <big> {{nummer + 1}} </big>
+    </a>:    <big> {{scorelist[nummer]}} </big>
+
+    {% endfor %}
+
+
+<hr>
+
+
+<a href="https://digital.aschaffenburg.de">
+            <h2>dima home</h2>
+        </a>
+
+{% endblock %}
+

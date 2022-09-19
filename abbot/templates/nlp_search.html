@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Suche {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="stichwort"> Stichwort </label>
+        <input type="text" name="stichwort"
+               placeholder='Stichwort eingeben'
+               class='form-control'
+               value="{{ request.form['stichwort'] }}"></input>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"> Los! </button>
+    </div>
+</form>
+
+
+
+<a href="https://digital.aschaffenburg.de">
+            <h2>dima home</h2>
+        </a>
+
+        
+{% endblock %}

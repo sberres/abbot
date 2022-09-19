@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} dima KI {% endblock %}</h1>
+
+    {% for post in posts %}
+
+	<h3> {{ post['id'] }}. </h3>
+    	<a href="{{ url_for('post', post_id=post['id']) }}">
+            <h2>{{ post['title'] }}</h2>
+        </a>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+
+        <a href="{{ url_for('edit', id=post['id']) }}">
+            <span class="badge badge-warning">Edit</span>
+        </a>
+
+	<br><br>
+        {{ post['content'] }}
+
+        <hr>
+        <!-- tags: --> 
+        <tt> tags: {{ post['tags'] }}  </tt>
+        <br>
+
+        <!-- Quellen: -->
+        <i> Quellen: {{ post['source'] }} </i>        
+        <hr>
+
+
+    {% endfor %}
+
+{% endblock %}
+
+
+

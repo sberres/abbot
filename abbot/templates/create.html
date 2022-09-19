@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Neuer Eintrag {% endblock %}</h1>
+
+<form method="post">
+    <!-- content -->    
+    <div class="form-group">
+        <label for="content"> Inhalt </label>
+        <textarea name="content" placeholder="Inhalt eingeben"
+                  class="form-control">{{ request.form['content'] }}</textarea>
+    </div>
+
+
+    <!-- keywords -->    
+     <div class="form-group">
+        <label for="keywords"> Schlagworte </label>
+        <textarea name="keywords" placeholder="Schlagworte eingeben"
+                  class="form-control">{{ request.form['keywords'] }}</textarea>
+    </div>
+ 
+
+    <!-- source -->
+    <div class="form-group">
+        <label for="title"> Quellen </label>
+        <input type="text" name="source"
+               placeholder="Quellen angeben" class="form-control"
+               value="{{ request.form['source'] }}"></input>
+    </div>
+
+    <!-- theme -->
+    <div class="form-group">
+        <label for="theme"> Thema </label>
+        <input type="text" name="theme"
+               placeholder="Thema auswählen" class="form-control"
+               value="{{ request.form['theme'] }}"></input>
+    </div>
+    
+      <!-- nickname -->
+      <!--
+      <div class="form-group">
+          <label for="nickname"> Spitzname </label>
+          <input type="text" name="nickname"
+                 placeholder="..." class="form-control"
+                 value="{{ request.form['nickname'] }}"></input>
+      </div>
+      
+    <!-- phone -->
+    <!--
+    <div class="form-group">
+            <label for="nickname"> Telefon </label>
+            <input type="text" name="phone"
+                   placeholder="..." class="form-control"
+                   value="{{ request.form['phone'] }}"></input>
+    </div>
+    -->    
+        
+    <!-- submit --> 
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"> Los! </button>
+    </div>
+</form>
+{% endblock %}
+
+
+<!--
+id
+date
+
+source
+type
+content
+theme
+
+
+category
+keywords
+
+
+
+other
+location
+coordinates
+<!-- nickname
+email
+phone
+
+
+comments
+likes
+-->
+

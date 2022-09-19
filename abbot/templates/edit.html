@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Edit "{{ entry['id'] }}" {% endblock %}</h1>
+
+<form method="post">
+    <!-- content -->   
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea name="content" placeholder="...Beitrag..."
+                  class="form-control">{{ request.form['content'] or entry['content'] }}</textarea>
+    </div>
+    
+    <!-- theme -->    
+    <div class="form-group">
+        <label for="theme">Title</label>
+        <input type="text" name="theme" placeholder="theme"
+               class="form-control"
+               value="{{ request.form['title'] or entry['theme'] }}">
+        </input>
+    </div>
+
+    <!-- keywords -->   
+    <div class="form-group">
+        <label for="keywords"> keywords </label>
+        <textarea name="keywords" placeholder="Keywords"
+                  class="form-control">{{ request.form['keywords'] or entry['keywords'] }}</textarea>
+    </div>  
+    
+    <!-- source -->
+    <div class="form-group">
+        <label for="source"> Quellen </label>
+        <input type="text" name="source" placeholder="Quellen..."
+               class="form-control"
+               value="{{ request.form['source'] or entry['source'] }}">
+        </input>
+    </div>
+
+    <!-- submit -->     
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+<hr>
+<form action="{{ url_for('delete', id=entry['id']) }}" method="POST">
+    <input type="submit" value="Delete Entry"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Sicher? Löschen? - Are you sure you want to delete this entry')">
+</form>
+{% endblock %}
+
